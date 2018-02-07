@@ -14,7 +14,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         //        PubLoginUserContext.clear();
-        System.out.println("test...");
+//        System.out.println("test...");
         if (false) {
             try {
                 //                response.sendRedirect(propProvider.getPubLoginPath());
