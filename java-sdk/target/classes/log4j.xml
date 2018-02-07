@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d - %c -%-4r [%t] %-5p %x - %m%n"/>
+        </layout>
+        <!--限制输出级别-->
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="ERROR"/>
+            <param name="LevelMin" value="TRACE"/>
+        </filter>
+    </appender>
+
+    <appender name="DEBUGLOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="logs/debug/debug.log"/>
+        <param name="Append" value="true"/>
+        <param name="Encoding" value="UTF-8"/>
+        <param name="DatePattern" value="'_'yyyyMMdd'.log'"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p (%F:%L) - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="DEBUG"/>
+            <param name="LevelMin" value="DEBUG"/>
+        </filter>
+    </appender>
+    <appender name="INFOLOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="logs/info/info.log"/>
+        <param name="Append" value="true"/>
+        <param name="Encoding" value="UTF-8"/>
+        <param name="DatePattern" value="'_'yyyyMMdd'.log'"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p (%F:%L) - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="INFO"/>
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+    <appender name="WARNLOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="logs/warn/warn.log"/>
+        <param name="Append" value="true"/>
+        <param name="Encoding" value="UTF-8"/>
+        <param name="DatePattern" value="'_'yyyyMMdd'.log'"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p (%F:%L) - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="WARN"/>
+            <param name="LevelMin" value="WARN"/>
+        </filter>
+    </appender>
+    <appender name="ERRORLOG" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="logs/error/error.log"/>
+        <param name="Append" value="true"/>
+        <param name="Encoding" value="UTF-8"/>
+        <param name="DatePattern" value="'_'yyyyMMdd'.log'"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd  HH:mm:ss.sss} [%-5p] - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="ERROR"/>
+            <param name="LevelMin" value="ERROR"/>
+        </filter>
+    </appender>
+
+
+    <logger name="com.baidu.dueros" additivity="true">
+        <level value="debug"/>
+        <appender-ref ref="DEBUGLOG"/>
+        <appender-ref ref="ERRORLOG"/>
+        <appender-ref ref="INFOLOG"/>
+    </logger>
+
+    <root>
+        <priority value="info"/>
+        <appender-ref ref="CONSOLE"/>
+<!--        <appender-ref ref="INFOLOG"/>
+        <appender-ref ref="WARNLOG"/>-->
+    </root>
+
+</log4j:configuration>
